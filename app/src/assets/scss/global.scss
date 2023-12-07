@@ -1,0 +1,19 @@
+/** Convert px to rem */
+@function rem($pxValue) {
+  $remValue: decimal-floor(calc($pxValue / 16), 4);
+  @return #{$remValue}rem;
+}
+
+/** Custom color properties */
+:root {
+  --bg-blue: #14213d;
+  --grey: #e5e5e5;
+  --orange: #fca311;
+}
+
+/** General styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
