@@ -1,0 +1,64 @@
+/** Convert px to rem */
+$html-font-size: 16px;
+
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
+/** Custom color properties */
+:root {
+  --bg-dark: #141414;
+  --bg-light: #181818;
+  --red: #E50914;
+  --white: #FFFFFF;
+  --grey: #403d39;
+  --black: #000000;
+  --black-transparent: #000000b3;
+}
+
+/** General styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  color: var(--white);
+  font-weight: 400;
+}
+
+h1{
+  font-size: rem(24);
+}
+
+h2{
+  font-size: rem(20);
+}
+
+p{
+  font-size: rem(16);
+}
+
+img{
+  width: 100%;
+}
+
+button:hover{
+  cursor: pointer;
+}
