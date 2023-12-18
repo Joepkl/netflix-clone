@@ -27,13 +27,13 @@ const LOGIN_ROUTE = {
 //   },
 // };
 
-const publicRoutes = [
+const authRoutes = [
   BASE_ROUTE,
   LOGIN_ROUTE,
   // CREATE_ACCOUNT_ROUTE,
 ];
 
-export default publicRoutes;
+export default authRoutes;
 export {
   // BASE_ROUTE,
   LOGIN_ROUTE,

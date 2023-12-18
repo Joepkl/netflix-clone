@@ -1,2 +1,2 @@
 # Netflix clone
-This project is a clone of Netflix, using Vue.js with Typescript and SCSS.
+This project is a clone of Netflix, using Vue.js with Typescript and SCSS. The focus for this project was creating a seamless and quick user experience, with a clean responsive user interface. This is done by making use of the Vue.js SPA (Single Page Application) functionalities, and optimizing usage of local storage where possible. Furthermore this project has been developed with a focus on reusabele, maintainable and clean code. 

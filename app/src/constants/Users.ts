@@ -2,7 +2,7 @@ import ProfileImg1 from '@/assets/images/img_profile_1.png';
 import ProfileImg2 from '@/assets/images/img_profile_2.png';
 import ProfileImg3 from '@/assets/images/img_profile_3.png';
 
-type UserProfile = {
+export type UserProfile = {
   userName: string;
   profileImage: string;
   id: number;

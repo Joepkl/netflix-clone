@@ -1,12 +1,19 @@
 /** Custom color properties */
 :root {
+  /** Backgrounds */
   --bg-dark: #141414;
   --bg-light: #181818;
-  --red: #E50914;
-  --white: #FFFFFF;
-  --grey: #403d39;
+  --bg-blue-gradient: linear-gradient(to top, var(--bg-dark) 10%, var(--blue-main) 90%);
+
+  /** Black */
   --black: #000000;
   --black-transparent: #000000b3;
+    
+  /** Others */
+  --red-main: #E50914;
+  --white-main: #FFFFFF;
+  --grey-main: #403d39;
+  --blue-main: #0d1b2a;
 }
 
 /** General styling */
@@ -27,8 +34,9 @@ h4,
 h5,
 h6,
 p,
-a {
-  color: var(--white);
+a,
+button {
+  color: var(--white-main);
   font-weight: 400;
 }
 
@@ -50,4 +58,11 @@ img{
 
 button:hover{
   cursor: pointer;
+}
+
+input {
+  appearance: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
