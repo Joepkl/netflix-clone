@@ -6,7 +6,7 @@
         v-for="user in USERS" :key="user.id"
         :user-name="user.userName"
         :profile-image="user.profileImage"
-        @selected-profile="login(user)"
+        @selected-profile="handleLogin(user)"
       />
     </div>
   </div>
@@ -29,8 +29,16 @@ import ProfileCard from '@/components/partials/users/ProfileCard.vue';
 import { USERS } from '@/constants/Users';
 import type { UserProfile } from '@/constants/Users';
 
+/** API calls */
+import { fetchTrendingMovies, fetchUpcomingMovies } from '@/api/fetchMovies';
+
 const store = useStore();
 const router = useRouter();
+
+function handleLogin(user: UserProfile) {
+  getMovies();
+  login(user);
+}
 
 function login(user: UserProfile) {
   store.setActiveUser(user);
@@ -38,6 +46,14 @@ function login(user: UserProfile) {
   router.push({name: HOME_ROUTE.name, params: {id: user.id}});
 }
 
+async function getMovies() {
+  try {
+    await fetchTrendingMovies();
+    await fetchUpcomingMovies();
+  } catch(error) {
+    alert(error)
+  }
+}
 </script>
 
 <style lang="scss" scoped>

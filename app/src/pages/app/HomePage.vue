@@ -18,22 +18,9 @@ import { useStore } from "@/stores/store.ts";
 /** Components */
 import CHeader from '@/components/partials/layout/CHeader.vue';
 
-/** API calls */
-import { fetchTrendingMovies } from '@/api/fetchMovies';
 
 const store = useStore();
 const router = useRouter();
-
-getTrendingMovies();
-
-async function getTrendingMovies() {
-  const response = await fetchTrendingMovies();
-  if(response.isSuccess) {
-    console.log('sucess', response.data);
-  } else {
-    console.log('error', response.error)
-  }
-}
 </script>
 
 <style lang="scss">
