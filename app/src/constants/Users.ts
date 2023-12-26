@@ -2,20 +2,26 @@ import ProfileImg1 from '@/assets/images/img_profile_1.png';
 import ProfileImg2 from '@/assets/images/img_profile_2.png';
 import ProfileImg3 from '@/assets/images/img_profile_3.png';
 
-export type UserProfile = {
-  userName: string;
-  profileImage: string;
-  id: number;
-};
+class User {
+  userName;
+  profileImage;
+  id;
 
-const createProfile = (userName: string, profileImage: string, id: number): UserProfile => ({
-  userName,
-  profileImage,
-  id,
-});
+  constructor(userName: string, profileImage: string, id:number) {
+    this.userName = userName;
+    this.profileImage = profileImage;
+    this.id = id;
+  }
+}
 
 export const USERS = {
-  MIKE: createProfile('Mike',ProfileImg1, 1),
-  SARA: createProfile('Sara',ProfileImg2, 2),
-  DAVID: createProfile('David',ProfileImg3, 3),
+  MIKE: new User('Mike', ProfileImg1, 1),
+  SARA: new User('Sara', ProfileImg2, 2),
+  DAVID: new User('David', ProfileImg3, 3),
+}
+
+export interface UserProfile {
+  userName: string,
+  profileImage: string,
+  id: number,
 }

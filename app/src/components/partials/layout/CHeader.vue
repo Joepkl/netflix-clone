@@ -9,7 +9,6 @@
       <SearchButton />
     </div>
   </div>
-  <h1 class="test">Test</h1>
 </template>
 
 <script setup lang="ts">
@@ -65,23 +64,21 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   padding: rem(30) rem(20);
-  transition: .5s;
+  transition: padding .5s;
+  // transition: .5s;
+  z-index: 10;
 
   &.sticky {
     position: sticky;
     top: 0;
-    background-color: red;
-    // background: transparent;
-    // backdrop-filter: blur(rem(8));
+    background-color: var(--black-transparent);
+    backdrop-filter: blur(rem(30));
+    padding: rem(15) rem(20);
   }
 
   .actions-wrapper {
     display: flex;
     gap: rem(10);
   }
-}
-
-.test {
-  margin-top: rem(900);
 }
 </style>

@@ -22,12 +22,11 @@
       @click="clearInput"
     />
   </div>
-  <div v-if="isSearchExpanded" class="overlay" @click="reset" />
 </template>
 
 <script setup lang="ts">
 /** Vue */
-import { ref } from 'vue';
+import { ref, computed, watch, onUnmounted } from 'vue';
 
 /** Components */
 import CButton from '@/components/ui/CButton.vue';
@@ -36,11 +35,16 @@ import CButton from '@/components/ui/CButton.vue';
 import SearchIcon from '@/assets/icons/ic_search.svg';
 import CrossIcon from '@/assets/icons/ic_cross.svg';
 
-const isSearchExpanded = ref(false);
+/** Store */ // @ts-ignore
+import { useStore } from "@/stores/store.ts";
+
+const store = useStore();
 const input = ref('');
 
+const isSearchExpanded = computed(() => store.getIsSearchExpanded);
+
 function expandSearch():void {
-  isSearchExpanded.value = true;
+  store.setIsSearchExpanded(true);
 }
 
 function handleInput():void {
@@ -51,17 +55,22 @@ function clearInput():void {
   input.value = '';
 }
 
-function reset():void {
-  isSearchExpanded.value = false;
-  clearInput();
-}
+watch(() => isSearchExpanded.value, (newVal) => {
+  if(!newVal) {
+    clearInput();
+  }
+})
+
+onUnmounted(() => {
+  store.setIsSearchExpanded(false);
+})
 </script>
 
 <style lang="scss" scoped>
 .search-input-wrapper {
   position: relative;
   height: rem(32);
-  z-index: 10;
+  z-index: 12;
 
   &.expanded {
     background-color: var(--bg-dark);
@@ -102,14 +111,5 @@ function reset():void {
       height: rem(15);
     }
   }
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9;
 }
 </style>

@@ -1,12 +1,13 @@
 /** Store */ // @ts-ignore
 import { useStore } from "@/stores/store.ts";
+import type Movie from "@/constants/Movie";
 
 const store = useStore();
 
-export interface ApiResponse {
-  isSuccess: boolean,
-  data?: Array<number> | null,
-  error?: string | null,
+interface ApiResponse {
+  isSuccess?: boolean,
+  data?: Array<Movie>,
+  error?: string,
 }
 
 /** Base fetch data function */
@@ -29,7 +30,6 @@ export async function fetchData(url:string):Promise<ApiResponse> {
     }
 
     const data = await response.json();
-    console.log(data)
     return { isSuccess: true, data: data.results };
   } 
   catch(err) {

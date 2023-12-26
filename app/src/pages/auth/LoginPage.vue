@@ -1,13 +1,16 @@
 <template>
   <div class="login-page-wrapper">
-    <h1 class="title">Who's watching?</h1>
-    <div class="user-profiles-wrapper">
-      <ProfileCard
-        v-for="user in USERS" :key="user.id"
-        :user-name="user.userName"
-        :profile-image="user.profileImage"
-        @selected-profile="handleLogin(user)"
-      />
+    <div class="content-wrapper">
+      <h1 class="title">Who's watching?</h1>
+      <ul class="user-profiles-wrapper">
+        <li v-for="user in USERS" :key="user.id">
+          <ProfileCard
+            :user-name="user.userName"
+            :profile-image="user.profileImage"
+            @selected-profile="handleLogin(user)"
+          />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -48,8 +51,8 @@ function login(user: UserProfile) {
 
 async function getMovies() {
   try {
-    await fetchTrendingMovies();
-    await fetchUpcomingMovies();
+    fetchTrendingMovies();
+    fetchUpcomingMovies();
   } catch(error) {
     alert(error)
   }
@@ -61,6 +64,9 @@ async function getMovies() {
   min-height: 100dvh;
   background-color: var(--bg-dark);
   padding: rem(30) rem(20) rem(20);
+}
+
+.content-wrapper {
 
   .title {
     text-align: center;
@@ -73,6 +79,24 @@ async function getMovies() {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(100), 1fr));
     gap: rem(20) rem(30);
+  }
+}
+
+@media screen and (min-width: 992px){
+  .content-wrapper {
+    margin-top: 20vh;
+
+    .user-profiles-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: fit-content;
+      max-width: rem(500);
+    }
+
+    .profile-card-wrapper {
+      width: rem(130);
+    }
   }
 }
 </style>

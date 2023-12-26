@@ -1,7 +1,7 @@
 const HomePage = () => import('@/pages/app/HomePage.vue');
 
 const HOME_ROUTE = {
-  path: '/user:id',
+  path: '/user=:id',
   name: 'Home',
   component: HomePage,
   meta: {
