@@ -1,26 +1,31 @@
 <template>
   <div class="home-page-wrapper">
     <CHeader />
-    <div class="content-wrapper">
+    <div v-if="trendingMovies" class="content-wrapper">
       <MovieCarousel
         title="Trending Movies"
         :movieData="trendingMovies"
+        :animation-delay="0"
       />
       <MovieCarousel
         title="Trending Movies"
         :movieData="trendingMovies"
+        :animation-delay="0.2"
       />
       <MovieCarousel
         title="Trending Movies"
         :movieData="trendingMovies"
+        :animation-delay="0.4"
       />
       <MovieCarousel
         title="Trending Movies"
         :movieData="trendingMovies"
+        :animation-delay="0.6"
       />
       <MovieCarousel
         title="Trending Movies"
         :movieData="trendingMovies"
+        :animation-delay="0.8"
       />
     </div>
   </div>
@@ -43,7 +48,6 @@ const store = useStore();
 const router = useRouter();
 
 const trendingMovies = computed(() => store.getTrendingMovies ?? []);
-
 </script>
 
 <style lang="scss">

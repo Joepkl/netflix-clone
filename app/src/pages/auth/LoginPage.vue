@@ -49,10 +49,22 @@ function login(user: UserProfile) {
   router.push({name: HOME_ROUTE.name, params: {id: user.id}});
 }
 
+function getSpotlightMovie() {
+  const originalData = store.getTrendingMovies;
+  const trendingMovie = originalData?.shift();
+  if(originalData) {
+    store.setTrendingMovies(originalData);
+  }
+
+  console.log(trendingMovie)
+  console.log(store.getTrendingMovies)
+}
+
 async function getMovies() {
   try {
     fetchTrendingMovies();
     fetchUpcomingMovies();
+    getSpotlightMovie();
   } catch(error) {
     alert(error)
   }
